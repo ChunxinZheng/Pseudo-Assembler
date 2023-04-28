@@ -104,7 +104,7 @@ program	 	=	 	stmt-or-value ... <br>
  	 &emsp;&emsp;	|	 	(label psymbol) <br>
    no entry in PRIMPL array <br>
    E.g. (label A), the psymbol A is bound to the index of the memory vector where the next actual instruction would be loaded, and we can subsequently use psymbols labelled as targets for branch & jump. <br> <br> 
-Please refer to [Q8:Assembler](https://github.com/hg2006/Primpl-Assembler-W23-CS-146/issues/1#issue-1687729289) for further details and restrictions on the use of psymbols in A-PRIMPL.
+Please refer to [Q8:Assembler][1] for further details and restrictions on the use of psymbols in A-PRIMPL.
 
 ## An Example Program in A-PRIMPL and PRIMPL
 This A-PRIMPL program below calculates and prints the powers of 2, from 1 to 10: <br>
