@@ -19,7 +19,7 @@ Modern computers put both programs and data into memory. To approach this situat
 Note there are still some remaining "higher-level" features of PRIMPL that makes it "unrealistic" as it's supposed to be a machine language. For one thing, locations have fixed size (32 or 64 bits) but PRIMPL pretends they do not. Also, PRIMPL still supports unbounded integers for teaching convenience. Another element of PRIMPL that's not usually seen among low-level languages is that printing is given free as an instruction, again, for the convenience.
 <br> <br>
 ## The Project
-This project is about writing an assembler from A-PRIMPL to PRIMPL, completed as an assignment question of CS 146, W23 offering. No starter code has been given except for the [PRIMPL simulator](Simulator.rkt), which was for the use of helping understand the core of PRIMIPL as well as facilitating debugging process. Considering its difficulty, the instructor team has allowed this assignment to be completed in pairs.
+This project is about writing an assembler from A-PRIMPL to PRIMPL, completed as an assignment question of CS 146, W23 offering. No starter code has been given except for the [PRIMPL simulator](PRIMPL Simulator.rkt), which was for the use of helping understand the core of PRIMIPL as well as facilitating debugging process. Considering its difficulty, the instructor team has allowed this assignment to be completed in pairs.
 <br><br>
 
 ## Grammar and Other Details of PRIMPL 
