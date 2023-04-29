@@ -30,7 +30,8 @@
 ;;     to see the result of running the program.
 
 
-;; -------- Examples --------
+;;    Example
+;; ---------------------------------------------------------------------
 
 ;; The following A-PRIMPL code produces the factorial of 5 (120).
 
