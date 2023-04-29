@@ -6,16 +6,33 @@
 ;; ---------------------------------------------------------------------
 
 ;; This is an assembler that converts a pseudocode PRIMPL to its assembler language A-PRIMPL.
-;; Both languages were created by the University of Waterloo CS 146 instructor team.
+;; Both languages were designed by the University of Waterloo CS 146 instructor team.
 ;; More detailed information, including the grammar for both languages, is included in README.
 ;; The PRIMPL Simulator (Simulator.rkt) was provided by the University of Waterloo
 ;; CS 146 instructor team. 
 
 
-;;    User Guide 
+;;    User Guide
 ;; ---------------------------------------------------------------------
 
-;; 
+(require test-engine/racket-tests)
+(require "Simulator.rkt")
+
+(define (run primpl) (load-primp primpl) (run-primp))
+(define (run-a aprimpl)
+  (load-primp (primpl-assemble aprimpl))
+  (run-primp))
+
+;; [primpl-assemble] produces a list of the converted PRIMPL code corresponding to
+;; the consumed A-PRIMPL code.
+;; The PRIMPL code can be executed by the provided PRIMPL Simulator.
+
+;; Run the function (primpl-assemble aprimpl), where [aprimpl] is a list of APRIMPL instructions,
+;;     to see the converted PRIMPL code.
+;; Run the function (run primpl), where [primpl] is a list of PRIMPL instructions
+;;     to see the result of running the program.
+;; Run the function (run-a aprimpl), where [aprimpl] is a list of A-PRIMPL instructions
+;;     to see the result of running the program.
 
 
 
