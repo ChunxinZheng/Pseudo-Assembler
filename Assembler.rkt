@@ -9,19 +9,16 @@
 ;; Both languages were designed by the University of Waterloo CS 146 instructor team.
 ;; More detailed information, including the grammar for both languages, is included in README.
 ;; The PRIMPL Simulator (Simulator.rkt) was provided by the University of Waterloo
-;; CS 146 instructor team. 
+;; CS 146 instructor team.
+
 
 
 ;;    User Guide
 ;; ---------------------------------------------------------------------
 
-(require test-engine/racket-tests)
 (require "Simulator.rkt")
 
 (define (run primpl) (load-primp primpl) (run-primp))
-(define (run-a aprimpl)
-  (load-primp (primpl-assemble aprimpl))
-  (run-primp))
 
 ;; [primpl-assemble] produces a list of the converted PRIMPL code corresponding to
 ;; the consumed A-PRIMPL code.
@@ -31,9 +28,40 @@
 ;;     to see the converted PRIMPL code.
 ;; Run the function (run primpl), where [primpl] is a list of PRIMPL instructions
 ;;     to see the result of running the program.
-;; Run the function (run-a aprimpl), where [aprimpl] is a list of A-PRIMPL instructions
-;;     to see the result of running the program.
 
+
+;; -------- Examples --------
+
+;; The following A-PRIMPL code produces the factorial of 5 (120).
+
+;;'((label TOP)
+;;  (equal cond x 0)
+;;  (branch cond DONE)
+;;  (mul y y x)
+;;  (sub x x 1)
+;;  (jump TOP)
+;;  (label DONE)
+;;  (print-val y)
+;;  (halt)
+;;  (data x 5)
+;;  (data y 1)
+;;  (data cond #t))
+
+;; The converted PRIMPL code is
+
+;;'((equal (9) (7) 0)
+;;  (branch (9) 5)
+;;  (mul (8) (8) (7))
+;;  (sub (7) (7) 1)
+;;  (jump 0)
+;;  (print-val (8))
+;;  0
+;;  5
+;;  1
+;;  #t)
+
+;; The value can be varified by
+;; (run ...[insert the PRIMPL code here])
 
 
 
@@ -307,5 +335,6 @@
                                      (map (lambda (opd) (resolve-opd table opd)) opds)) acc))]
            ['(halt) (translate (rest lst) table (cons 0 acc))]
            [else (translate (rest lst) table (cons (first lst) acc))])]))
+
 
 
