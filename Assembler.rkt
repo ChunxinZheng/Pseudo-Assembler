@@ -2,6 +2,7 @@
 
 ;; AUTHORS: Lex Stapleton, Chunxin Zheng
 
+
 ;;    Basic Information 
 ;; ---------------------------------------------------------------------
 
@@ -261,7 +262,11 @@
        [else (incorrect-usage-error
               (format "cannot use ~a as a the destination of a jump/branchs" symbol))])]
     [(lit? symbol) symbol]
-    [else symbol]))
+    [else (match symbol
+            [`(,fst ,snd)
+     (list (resolve-index-first  table fst)
+           (resolve-index-second table snd))]
+            [else symbol])]))
 
 
 ;; ----- Resolving the Opd in Remaining Instructions -----
@@ -330,6 +335,11 @@
            [`(print-val ,opd) (translate (rest lst) table
                                          (cons (list 'print-val (resolve-opd table opd)) acc))]
            [`(print-string ,str) (translate (rest lst) table (cons (first lst) acc))]
+           
+;;          feature for SIMPL Compiler 
+;           [`(jsr ,dest ,loc) (translate (rest lst) table
+;                                         (cons (list 'jsr (resolve-dest table dest)
+;                                                     (resolve-jump-branch table loc)) acc))]
            [`(,fun ,dest ,opds ...)
             (translate (rest lst) table
                        (cons (append (list fun (resolve-dest table dest))
