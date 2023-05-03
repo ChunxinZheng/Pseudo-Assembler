@@ -50,8 +50,13 @@ e.g. ```(add (15) (11) (12))``` => "M\[15] (value at memory location 15) <- M\[1
 6. Print <br>
 ```(print-val 21)``` <br>
 ```(print (15))``` <br>
-```(print-string "\n")``` <br> <br>
+```(print-string "\n")``` <br> 
 
+7. Offset <br>
+```(offset LABEL)``` => M[offset + M[LABEL]] <br>
+e.g. ```(add (10) (-1 (59)) 1)``` => M[10] ← M[-1 + M[59]]+1 <br>
+
+<br>
 The following grammar tree of PRIMPL is provided in Haskell <br> <br>
 program	 	=	 	stmt-or-value ... <br>
  	 	 	 	 
