@@ -1,4 +1,4 @@
-# PRIMPL-Assembler
+# Pseudo-Assembler (A-PRIMPL to PRIMPL)
 This assembler was done as an assignment question of CS 146, W23 offering, instructed by Brad Lushman, at the University of Waterloo. Relevant assignment is [Q8:Assembler][1].
 
 [1]: https://github.com/ChunxinZheng/PRIMPL-Assembler/issues/1#issue-1689225684
