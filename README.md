@@ -91,7 +91,7 @@ program	 	=	 	stmt-or-value ... <br>
  ---
  
   ## A-PRIMPL: The Assembly Language for PRIMPL
- As the assembly language for PRIMPL, A-PRIMPL supports some high-level features to facilitate coding. These features provided in A-PRIMPL can make the process of compiling even higher level language to A-PRIMPL significantly easier (an example compiler is [available here](https://github.com/hg2006/A-simple-compiler)), and we can subsequently use this assembler to convert the code into PRIMPL.
+ As the assembly language for PRIMPL, A-PRIMPL supports some high-level features to facilitate coding. These features provided in A-PRIMPL can make the process of compiling even higher level language to A-PRIMPL significantly easier (an example compiler is [available here][3]), and we can subsequently use this assembler to convert the code into PRIMPL.
  The A-PRIMPL grammar carries the above rules from PRIMPL, with every occurrence of ```imm``` replaced by ```psymbol-or-imm```, which means that either a PRIMPL ```operand``` or a ```psymbol```  (A-PRIMPL symbol) can be used. A ```psymbol``` satisfies the same spelling rules as a Racket symbol but has no explicit apostrophe. We also make the same adaptive approach for ```ind```. <br> <br>
  A-PRIMPL also adds the following grammmar rules for pseudo-instructions: <br> <br>
   stmt	 	=	 	(halt) <br>
@@ -112,6 +112,7 @@ program	 	=	 	stmt-or-value ... <br>
    E.g. ```(label A)```, the psymbol A is bound to the index of the memory vector where the next actual instruction would be loaded, and we can subsequently use psymbols labeled as targets for branch & jump. <br> <br> 
 Please refer to [Q8:Assembler][1] for further details and restrictions on the use of psymbols in A-PRIMPL.
 
+[3]: https://github.com/ChunxinZheng/Pseudo-Compiler
 ---
 
 ## An Example Program in A-PRIMPL and PRIMPL
