@@ -35,26 +35,27 @@ PC is a variable that holds the location of the next instruction to be executed.
 For operands, we need to distinguish between 12 and fetch (12). <br>
 We will define 12 as referring to number 12, and (12) as fetching the value at location 12.  <br>
 
-3. Operations <br>
+3. Offset <br>
+After introducing [stack pointer (sp)](https://github.com/ChunxinZheng/Pseudo-Compiler#stack-frame) in the compiler assignment, we will need to use a slight offset from where the ```sp``` is pointing. The ```sp``` is pointing to the first unused element in the stack (see the link for details), but we might need to reference temporary values that are not stored on the top of the stack. Thus, an offset is needed to access the corresponding element. <br>
+Example: ```(add (10) (-1 (59)) 1)``` has the result M[10]←M[−1+M[59]]+1. The value -1 is an __offset__ from the location that we fetch from location 59. Supposed we have value 18 stored in location 59, i.e. ```(59)``` -> 18. ```(-1 (59))``` will then evaluate to ```(-1 18)``` -> ``` (17)```. <br>
+Also, offsets can be used as dest:  ```(move (-1 (59)) 0)``` has the effect M[−1+M[59]]←0
+
+4. Operations <br>
 Regular op: ```add``` ```sub``` ```mul``` ```div``` ```mod``` ```eq``` (==) ```ne``` (!=) ```gt``` (>) ```ge``` (>=) ```lt``` (<) ```le``` (<=) ```land``` (&&) ```lor``` (| |) ```lnot``` (!) <br>
 e.g. ```(add (15) (11) (12))``` => "M\[15] (value at memory location 15) <- M\[11] + M\[12]". <br>
 &emsp; &ensp; ```(add (15) (11) 1)``` => "M\[15] <- M\[11] + 1". <br>
 
-4. Move <br>
+5. Move <br>
 ```(move (10) (12))``` => "M\[10] <- M\[12]". <br>
 
-5. Jump & Branch <br>
+6. Jump & Branch <br>
 ```(jump 12)``` => "PC <- 12". <br>
 ```(branch (20) 12)``` "if M\[20] then PC <- 12". <br>
 
-6. Print <br>
+7. Print <br>
 ```(print-val 21)``` <br>
 ```(print (15))``` <br>
 ```(print-string "\n")``` <br> 
-
-7. Offset <br>
-```(offset LABEL)``` => M[offset + M[LABEL]] <br>
-e.g. ```(add (10) (-1 (59)) 1)``` => M[10] ← M[-1 + M[59]]+1 <br>
 
 <br>
 The following grammar tree of PRIMPL is provided in Haskell <br> <br>
